@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Bank Office</title>
+</head>
+
+<body>
+    <h1 class="text-6xl font-bold w-9/12 text-center mx-auto mt-12 mb-12">Bank Office's <span class="text-orange-600">Of
+            Rumman</span>
+    </h1>
+    <section class="bg-blue-400 w-9/12 mx-auto mt-5 p-12">
+        <h1 class="text-3xl font-semibold mb-5">Please Login First</h1>
+        <input type="email" name="" id="email" placeholder="Enter your Email"
+            class="w-3/4 block px-12 py-3 mb-5 rounded-md">
+        <input type="password" name="" id="password" placeholder="Enter your Password"
+            class="w-3/4 block px-12 py-3 mb-5 rounded-md">
+        <button id="submit"
+            class="bg-orange-400 px-12 py-3 rounded-md text-white font-semibold text-xl hover:bg-sky-700">Submit</button>
+    </section>
+
+
+    <script>
+        document.getElementById('submit').addEventListener('click', function () {
+            let email = document.getElementById('email')
+            let emailValue = email.value
+            let password = document.getElementById('password')
+            let passwordValue = password.value
+            if (emailValue == 'istiake12@gmail.com' && passwordValue == 'rumman01909449923') {
+                window.location.href = './secondpage.html'
+            }
+            else {
+                alert('please Enter Actual Email or Password')
+                document.getElementById('email').value = ''
+                document.getElementById('password').value = ''
+            }
+        })
+    </script>
+</body>
+
+</html>

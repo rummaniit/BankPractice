@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Bank Office</title>
+</head>
+
+<body>
+    <h1 class="text-6xl font-bold w-9/12 text-center mx-auto mt-12 mb-12">Bank Office's <span class="text-orange-600">Of
+            Rumman</span>
+    </h1>
+    <section class="grid grid-cols-3 gap-4 w-3/4 mx-auto">
+        <div class="bg-green-300 p-12 text-center rounded-lg">
+            <h1 class="text-3xl font-semibold">Deposite</h1>
+            <h3 class="text-5xl font-normal">$<span id="totalDeposite">00</span></h3>
+        </div>
+        <div class="bg-orange-300 p-12 text-center rounded-lg">
+            <h1 class="text-3xl font-semibold">Widraw</h1>
+            <h3 class="text-5xl font-normal">$<span id="totalWidraw">00</span> </h3>
+        </div>
+        <div class="bg-purple-300 p-12 text-center rounded-lg">
+            <h1 class="text-3xl font-semibold">Total Money</h1>
+            <h3 class="text-5xl font-normal">$<span id="totalMoney">1240</span> </h3>
+        </div>
+    </section>
+
+    <section class="grid grid-cols-2 gap-4 w-3/4 mx-auto mt-12">
+        <div class="bg-blue-600 p-12 text-center rounded-lg">
+            <h1 class="text-3xl font-semibold mb-2">Please Deposite</h1>
+            <input type="text" name="" id="depositeMoney" class="w-9/12 rounded-md p-1 mb-2" placeholder="Enter Value">
+            <button id="deposite"
+                class="bg-red-400 px-10 py-2 rounded-md text-white font-semibold text-xl hover:bg-orange-700">Deposite</button>
+        </div>
+        <div class="bg-gray-600 p-12 text-center rounded-lg">
+            <h1 class="text-3xl font-semibold mb-2">Provide Widraw Amount</h1>
+            <input type="text" name="" id="widrawMoney" class="w-9/12 rounded-md p-1 mb-2" placeholder="Enter Value">
+            <button id="widraw"
+                class="bg-red-400 px-10 py-2 rounded-md text-white font-semibold text-xl hover:bg-orange-700">Widraw</button>
+        </div>
+    </section>
+
+
+    <script>
+        //Deposite money
+        document.getElementById('deposite').addEventListener('click', function () {
+            let totalDeposite = document.getElementById('totalDeposite').innerText
+            let depositeMoney = document.getElementById('depositeMoney').value
+            document.getElementById('depositeMoney').value = ''
+            if (isNaN(depositeMoney)) {
+                return
+            }
+            let totalDepositeMoney = parseInt(totalDeposite) + parseInt(depositeMoney)
+            document.getElementById('totalDeposite').innerText = totalDepositeMoney
+            let totalMoney = document.getElementById('totalMoney').innerText
+            let allMoney = parseInt(totalMoney) + parseInt(depositeMoney)
+            document.getElementById('totalMoney').innerText = allMoney
+            document.getElementById('depositeMoney').value = ''
+        })
+        //Widraw Money
+        document.getElementById('widraw').addEventListener('click', function () {
+            let widrawMoney = document.getElementById('widrawMoney').value
+            let totalWidraw = document.getElementById('totalWidraw').innerText
+            if (widrawMoney == '') {
+                return
+            }
+            let totalMoney = document.getElementById('totalMoney').innerText
+
+            if (parseFloat(widrawMoney) > parseFloat(totalMoney)) {
+                alert('Cant Widrae')
+                document.getElementById('widrawMoney').value = ''
+                return;
+            }
+            let allwidrawTotal = parseFloat(totalWidraw) + parseFloat(widrawMoney)
+            document.getElementById('totalWidraw').innerText = allwidrawTotal
+
+            let allMoney = parseFloat(totalMoney) - parseFloat(widrawMoney)
+            document.getElementById('totalMoney').innerText = allMoney
+
+        })
+
+    </script>
+</body>
+
+</html>
